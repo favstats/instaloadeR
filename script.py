@@ -181,9 +181,9 @@ def insta_posts_py(query, scope, max_posts, scrape_comments, save_path = ""):
 			# data not available...? this happens sometimes, not clear why
 			pass
 
-	  if save_path != "":
-		  save_csv(save_path, results_posts)
+		if save_path != "":
+			save_csv(save_path, results_posts)
 
-	  results.append(results_posts)
+		results.append(results_posts)
                     
 	return results

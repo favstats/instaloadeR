@@ -72,11 +72,52 @@ Return a tibble with 10 Instagram posts that use `#coronavirus`.
 
 ```{r, eval = F}
 
-billgates <- insta_posts(query = "coronavirus", 
+corona <- insta_posts(query = "coronavirus", 
                          scope = "hashtag",
                          max_posts = 10, 
                          scrape_comments = F)
 
 
+corona
+```
 
+Also return comments and replies to comments for the 10 last `#coronavirus` posts.
+
+```{r}
+corona_comments <- insta_posts(query = "coronavirus", 
+                         scope = "hashtag",
+                         max_posts = 10, 
+                         scrape_comments = T)
+
+corona_comments
+```
+
+
+### Get Posts from a Specific User
+
+Return a tibble with the 10 Instagram posts by `corona` (this time it's the beer!).
+
+
+```{r, eval = F}
+
+corona_beer <- insta_posts(query = "corona", 
+                         scope = "username",
+                         max_posts = 10, 
+                         scrape_comments = F)
+
+
+corona_beer
+```
+
+
+
+```{r, eval = F}
+
+corona_beer_comments <- insta_posts(query = "corona", 
+                         scope = "username",
+                         max_posts = 10, 
+                         scrape_comments = T)
+
+
+corona_beer_comments
 ```
