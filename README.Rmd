@@ -67,15 +67,15 @@ reticulate::source_python("script.py")
 
 ### Get Posts with Hashtag
 
-Returns a tibble with hashtags.
+Return a tibble with 10 Instagram posts that use `#coronavirus`.
 
 
 ```{r, eval = F}
 
 billgates <- insta_posts(query = "coronavirus", 
                          scope = "hashtag",
-                         max_posts = 5, 
-                         scrape_comments = T)
+                         max_posts = 10, 
+                         scrape_comments = F)
 
 
 
