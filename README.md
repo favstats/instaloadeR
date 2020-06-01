@@ -57,17 +57,77 @@ use_python(py_config()$python)
 Initialize `instaloadeR`
 
 ``` r
-init_instaloadeR()
+readr::write_lines(py_instaloader, "script.py")
+reticulate::source_python("script.py")
 ```
 
 ### Get Posts with Hashtag
 
-Returns a tibble with hashtags.
+Return a tibble with 10 Instagram posts that use `#coronavirus`.
 
 ``` r
 
-billgates <- insta_posts(query = "billgatesisevil", 
+corona <- insta_posts(query = "coronavirus", 
                          scope = "hashtag",
-                         max_posts = 5, 
+                         max_posts = 10, 
                          scrape_comments = F)
+
+
+corona
+```
+
+Also return comments and replies to comments for the 10 last
+`#coronavirus` posts.
+
+``` r
+corona_comments <- insta_posts(query = "corona", 
+                         scope = "hashtag",
+                         max_posts = 10, 
+                         scrape_comments = T)
+
+corona_comments
+```
+
+### Get Posts from a Specific User
+
+Return a tibble with the 10 Instagram posts by `francediplo`.
+
+``` r
+
+francediplo <- insta_posts(query = "francediplo", 
+                         scope = "username",
+                         max_posts = 10, 
+                         scrape_comments = F)
+
+
+francediplo
+```
+
+Retrieve comments as well:
+
+``` r
+
+francediplo_comments <- insta_posts(query = "francediplo", 
+                         scope = "username",
+                         max_posts = 10, 
+                         scrape_comments = T)
+
+
+francediplo_comments
+```
+
+## Save output to csv
+
+As function scrapes, the data is saved and continously appended to a
+`.csv` file (for when you have long scraping tasks).
+
+``` r
+francediplo_comments <- insta_posts(query = "francediplo", 
+                         scope = "username",
+                         max_posts = 10, 
+                         scrape_comments = T, 
+                         save_path = "francediplo.csv")
+
+
+readr::read_csv("francediplo.csv")
 ```
