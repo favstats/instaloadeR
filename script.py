@@ -184,9 +184,6 @@ def insta_posts_py(query, scope, max_posts, scrape_comments, save_path = ""):
 	if save_path != "":
 		save_csv(save_path, results_posts)
 
-		results.append(results_posts)
-		results = list(itertools.chain.from_iterable(results))
-
-
+	results.append(results_posts)
                     
 	return results

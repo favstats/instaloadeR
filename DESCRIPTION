@@ -19,6 +19,7 @@ Imports:
     magrittr,
     dplyr,
     reticulate,
+    readr,
     purrr
 URL: https://github.com/favstats/instaloadeR
 BugReports: https://github.com/favstats/instaloadeR/issues

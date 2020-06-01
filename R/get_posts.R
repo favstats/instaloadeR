@@ -11,9 +11,17 @@ insta_posts <- function(query, scope, max_posts, scrape_comments, save_path = ""
 #' init_instaloadeR
 #' @export
 init_instaloadeR <- function(){
-  reticulate::source_python("https://raw.githubusercontent.com/favstats/instaloadeR/master/script.py")
+  ## doesnt work for some reason??
+  readr::write_lines(py_instaloader, "script.py")
+  reticulate::source_python("script.py")
+  # reticulate::source_python("https://raw.githubusercontent.com/favstats/instaloadeR/master/script.py")
+  # py_instaloader <- readr::read_lines("https://raw.githubusercontent.com/favstats/instaloadeR/master/script.py")
+  # usethis::use_data(py_instaloader, overwrite = T)
+  # readr::write_lines(python_script, path = "script.py")
   message("instaloader initialized!")
 }
+
+# init_instaloadeR()
 
 #' install_instaloadeR
 #' @export
