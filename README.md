@@ -57,8 +57,7 @@ This is a basic example which shows you how to solve a common problem:
 Initialize `instaloadeR`
 
 ``` r
-writeLines(py_instaloader, "script.py")
-reticulate::source_python("script.py")
+init_instaloadeR()
 ```
 
 ### Get Posts with Hashtag
@@ -132,3 +131,10 @@ francediplo_comments <- insta_posts(query = "francediplo",
 
 readr::read_csv("francediplo.csv")
 ```
+
+## TODO
+
+  - Implement follower endpoint
+  - Geotags
+  - Download Images/videos
+  - …

@@ -1,13 +1,13 @@
 Package: instaloadeR
-Title: What the Package Does (One Line, Title Case)
-Version: 0.0.0.9000
+Title: Wraps the instaloader python module
+Version: 0.0.0.9001
 Authors@R: 
-    person(given = "First",
-           family = "Last",
+    person(given = "Fabio",
+           family = "Votta",
            role = c("aut", "cre"),
-           email = "first.last@example.com",
+           email = "fabio.votta@gmail.com.com",
            comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
+Description: Wraps the instaloader python module.
 License: GPL-3
 Suggests: 
     testthat

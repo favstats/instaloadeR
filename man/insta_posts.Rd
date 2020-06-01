@@ -2,10 +2,21 @@
 % Please edit documentation in R/get_posts.R
 \name{insta_posts}
 \alias{insta_posts}
-\title{get_posts}
+\title{insta_posts}
 \usage{
 insta_posts(query, scope, max_posts, scrape_comments, save_path = "")
 }
+\arguments{
+\item{query}{Specify hashtag or username}
+
+\item{scope}{takes two values, either \code{hashtag} or \code{username}}
+
+\item{max_posts}{what is the maximum amount of posts to scrape}
+
+\item{scrape_comments}{get all comments from the retrieved posts (defaults to \code{FALSE}`)}
+
+\item{save_path}{specify a path to stream the Instagram data to (defaults to  \code{""} in which case no csv file is saved)}
+}
 \description{
-get_posts
+insta_posts
 }
