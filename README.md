@@ -36,6 +36,14 @@ Load library
 library(instaloadeR)
 ```
 
+Make sure to use your preferred Python installation
+
+``` r
+library(reticulate)
+
+use_python(py_config()$python)
+```
+
 Install necessary Python libraries
 
 ``` r
@@ -46,18 +54,10 @@ install_instaloadeR()
 
 This is a basic example which shows you how to solve a common problem:
 
-Make sure to use your preferred Python installation
-
-``` r
-library(reticulate)
-
-use_python(py_config()$python)
-```
-
 Initialize `instaloadeR`
 
 ``` r
-readr::write_lines(py_instaloader, "script.py")
+writeLines(py_instaloader, "script.py")
 reticulate::source_python("script.py")
 ```
 
@@ -80,7 +80,7 @@ Also return comments and replies to comments for the 10 last
 `#coronavirus` posts.
 
 ``` r
-corona_comments <- insta_posts(query = "corona", 
+corona_comments <- insta_posts(query = "coronavirus", 
                          scope = "hashtag",
                          max_posts = 10, 
                          scrape_comments = T)
@@ -119,7 +119,8 @@ francediplo_comments
 ## Save output to csv
 
 As function scrapes, the data is saved and continously appended to a
-`.csv` file (for when you have long scraping tasks).
+`.csv` file (for when you have long scraping tasks). Just specify a path
+for the `save_path` argument.
 
 ``` r
 francediplo_comments <- insta_posts(query = "francediplo", 

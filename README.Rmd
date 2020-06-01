@@ -38,6 +38,15 @@ library(instaloadeR)
 
 ```
 
+Make sure to use your preferred Python installation
+
+```{r}
+library(reticulate)
+
+use_python(py_config()$python)
+
+```
+
 Install necessary Python libraries
 
 ```{r, eval = F}
@@ -49,19 +58,12 @@ install_instaloadeR()
 
 This is a basic example which shows you how to solve a common problem:
 
-Make sure to use your preferred Python installation
 
-```{r}
-library(reticulate)
-
-use_python(py_config()$python)
-
-```
 
 Initialize `instaloadeR`
 
 ```{r, eval=F}
-readr::write_lines(py_instaloader, "script.py")
+writeLines(py_instaloader, "script.py")
 reticulate::source_python("script.py")
 ```
 
@@ -84,7 +86,7 @@ corona
 Also return comments and replies to comments for the 10 last `#coronavirus` posts.
 
 ```{r, eval = F}
-corona_comments <- insta_posts(query = "corona", 
+corona_comments <- insta_posts(query = "coronavirus", 
                          scope = "hashtag",
                          max_posts = 10, 
                          scrape_comments = T)
