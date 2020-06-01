@@ -22,35 +22,63 @@ knitr::opts_chunk$set(
 
 The goal of instaloadeR is to ...
 
+The goal of `tiktokr` is to provide a scraper for the video-sharing social networking service [TikTok](http://tiktok.com/). Mostly inspired by this Python module: [davidteather/TikTok-Api](https://github.com/davidteather/TikTok-Api). You will need Python 3.6 or higher to use `tiktokr`.
+
 ## Installation
 
-You can install the released version of instaloadeR from [CRAN](https://CRAN.R-project.org) with:
+You can install the development version from [GitHub](https://github.com/) with:
 
-``` r
-install.packages("instaloadeR")
+```{r eval = F}
+# install.packages("devtools")
+devtools::install_github("favstats/instaloadeR")
 ```
+
+Load library
+
+```{r example}
+library(instaloadeR)
+
+```
+
+Install necessary Python libraries
+
+```{r, eval = F}
+install_instaloadeR()
+```
+
 
 ## Example
 
 This is a basic example which shows you how to solve a common problem:
 
-```{r example}
-library(instaloadeR)
-## basic example code
+Make sure to use your preferred Python installation
+
+```{r}
+library(reticulate)
+
+use_python(py_config()$python)
+
 ```
 
-What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:
+Initialize `instaloadeR`
 
-```{r cars}
-summary(cars)
+```{r}
+init_instaloadeR()
+
 ```
 
-You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date.
+### Get Posts with Hashtag
 
-You can also embed plots, for example:
+Returns a tibble with hashtags.
 
-```{r pressure, echo = FALSE}
-plot(pressure)
+
+```{r, eval = F}
+
+billgates <- insta_posts(query = "billgatesisevil", 
+                         scope = "hashtag",
+                         max_posts = 5, 
+                         scrape_comments = F)
+
+
+
 ```
-
-In that case, don't forget to commit and push the resulting figure files, so they display on GitHub!

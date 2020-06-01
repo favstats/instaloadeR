@@ -16,4 +16,9 @@ LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.0
 Imports: 
-    magrittr
+    magrittr,
+    dplyr,
+    reticulate,
+    purrr
+URL: https://github.com/favstats/instaloadeR
+BugReports: https://github.com/favstats/instaloadeR/issues

@@ -38,7 +38,7 @@ def save_csv(save_path, results_posts):
 			for dictrow in results_posts:
 				writer.writerow(dictrow)
 
-def insta_posts(query, scope, max_posts, scrape_comments, save_path = ""):
+def insta_posts_py(query, scope, max_posts, scrape_comments, save_path = ""):
 	"""
 	Run custom search
 
@@ -115,7 +115,7 @@ def insta_posts(query, scope, max_posts, scrape_comments, save_path = ""):
 				"mentioned": ",".join(mention.findall(post.caption) if post.caption else ""),
 				"num_likes": post.likes,
 				"num_comments": post.comments,
-				"level": "1",
+				"level": "post",
 				"query": query
 			})
 		except (instaloader.QueryReturnedNotFoundException, instaloader.ConnectionException):
@@ -146,7 +146,7 @@ def insta_posts(query, scope, max_posts, scrape_comments, save_path = ""):
 						"mentioned": ",".join(mention.findall(comment.text)),
 						"num_likes": comment.likes_count if hasattr(comment, "likes_count") else 0,
 						"num_comments": len(answers),
-						"level": "2",
+						"level": "comment",
 						"query": query
 					})
 				except instaloader.QueryReturnedNotFoundException:
@@ -171,7 +171,7 @@ def insta_posts(query, scope, max_posts, scrape_comments, save_path = ""):
 							"mentioned": ",".join(mention.findall(answer.text)),
 							"num_likes": answer.likes_count if hasattr(answer, "likes_count") else 0,
 							"num_comments": 0,
-							"level": "3",
+							"level": "answer",
 							"query": query
 						})
 					except instaloader.QueryReturnedNotFoundException:
