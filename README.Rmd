@@ -20,9 +20,7 @@ knitr::opts_chunk$set(
 [![CRAN status](https://www.r-pkg.org/badges/version/instaloadeR)](https://CRAN.R-project.org/package=instaloadeR)
 <!-- badges: end -->
 
-The goal of instaloadeR is to ...
-
-The goal of `tiktokr` is to provide a scraper for the video-sharing social networking service [TikTok](http://tiktok.com/). Mostly inspired by this Python module: [davidteather/TikTok-Api](https://github.com/davidteather/TikTok-Api). You will need Python 3.6 or higher to use `tiktokr`.
+The goal of `instaloadeR` is to provide a scraper for the image-sharing social networking service [Instagram](http://https://www.instagram.com/). Mostly inspired by this Scraping Tool: [digitalmethodsinitiative/4cat](https://github.com/digitalmethodsinitiative/4cat). Wraps this Python module [instaloader](https://github.com/instaloader/instaloader). You will need Python 3.6 or higher to use `instaloader`.
 
 ## Installation
 

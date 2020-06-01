@@ -12,6 +12,7 @@ insta_posts <- function(query, scope, max_posts, scrape_comments, save_path = ""
 #' @export
 init_instaloadeR <- function(){
   reticulate::source_python("https://raw.githubusercontent.com/favstats/instaloadeR/master/script.py")
+  message("instaloader initialized!")
 }
 
 #' install_instaloadeR
