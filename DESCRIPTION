@@ -20,6 +20,7 @@ Imports:
     dplyr,
     reticulate,
     readr,
-    purrr
+    purrr,
+    rstudioapi
 URL: https://github.com/favstats/instaloadeR
 BugReports: https://github.com/favstats/instaloadeR/issues

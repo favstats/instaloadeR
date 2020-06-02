@@ -7,5 +7,5 @@
 init_instaloadeR()
 }
 \description{
-init_instaloadeR
+Initializes the instaloader python functions. Only works when \code{install_instaloadeR()} has ben executed.
 }

@@ -138,11 +138,82 @@ francediplo_comments <- insta_posts(query = "francediplo",
 
 readr::read_csv("francediplo.csv")
 
+
+
 ```
+
+
+## Get User or Hashtag posts in specific timerange
+
+Just specify both an argument for `since` (latest date) and `until` (earliest date) and get Instagram posts in specific timerange.
+
+```{r, eval = F}
+
+covidgoodnews <- insta_posts(query = "covidgoodnews",
+                         scope = "username",
+                         max_posts = 10,
+                         scrape_comments = F,
+                         since = "2020-06-01",
+                         until = "2020-01-01")
+
+
+
+covidgoodnews
+```
+
+
+## Login with your Instagram account
+
+Some functionalities (like scraping followers from an account) are only available if you login with your Instagram account. For this purpose, `instaloadeR` functions will read from your environment variables. 
+
+
+
+In order to add the info to your environment file, you can use the function `edit_r_environ()` from the [`usethis` package](https://usethis.r-lib.org/).
+
+```{r, eval = F}
+usethis::edit_r_environ()
+```
+
+
+This will open your .Renviron file in your text editor. Now, you can add the following line(s) to it:
+
+```{r, eval = F}
+INSTAGRAM_LOGIN=YOUR_USERNAME
+INSTAGRAM_PW=YOUR_PW
+```
+
+Save the file and restart R for the changes to take effect.
+
+The password line is optional and can also be provided via a prompt which will appear if you run `insta_login` without specifying the `passwd` argument (if you are icky about typing out your password which you should always be).
+
+Now you can use `insta_login` in the following way:
+
+```{r, eval=F}
+insta_login(save = T)
+```
+
+`save = T` will save your credentials, so next time you can just do `load = T` and you don't need to specify your password again:
+
+```{r, eval=F}
+insta_login(load = T)
+```
+
+## Get followers of an account
+
+You can all followers of an Instagram account with `get_followers` but only if you are logged in as an Instagram user. The function `get_followers` retrieves a character vector with all usernames that follow the specified account.
+
+```{r, eval=F}
+insta_login(load = T)
+
+
+get_followers("willsmith_fan_")
+```
+
 
 ## TODO
 
-+ Implement follower endpoint
 + Geotags
 + Download Images/videos
 + ...
+
+

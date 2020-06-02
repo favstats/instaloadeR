@@ -1,7 +1,8 @@
 import instaloader
+from datetime import datetime
 import os.path
 from os import path
-import itertools
+from itertools import dropwhile, takewhile
 import re
 import csv
 
@@ -17,10 +18,13 @@ instagram = instaloader.Instaloader(
 	save_metadata=True
 )
 
-## not implemented yet
-def insta_login(user, passwd):
-    instagram.login(user = user, passwd = passwd)
-    instagram.load_session_from_file(USER)
+def insta_login_py(user, passwd = "", save = False):
+    if passwd == "":
+      instagram.load_session_from_file(user)
+    if user != "" and passwd != "":
+      instagram.login(user = user, passwd = passwd)
+    if save:
+      instagram.save_session_to_file()
 
 def getList(dict): 
     return [*dict] 
@@ -38,7 +42,7 @@ def save_csv(save_path, results_posts):
 			for dictrow in results_posts:
 				writer.writerow(dictrow)
 
-def insta_posts_py(query, scope, max_posts, scrape_comments, save_path = ""):
+def insta_posts_py(query, scope, max_posts, scrape_comments, save_path = "", since = "", until = ""):
 	"""
 	Run custom search
 
@@ -50,6 +54,19 @@ def insta_posts_py(query, scope, max_posts, scrape_comments, save_path = ""):
 	mention = re.compile(r"@([a-zA-Z0-9_]+)")
 
 	queries = query.split(",")
+	
+	if since != "" and until != "":
+		since = since.split("-")
+		until = until.split("-")
+		
+		for item in range(len(since)):
+			since[item] = int(since[item])
+  
+		for item in range(len(until)):
+			until[item] = int(until[item])
+  
+		since = datetime(since[0], since[1], since[2])
+		until = datetime(until[0], until[1], until[2])
 
   # return queries
 	posts = []
@@ -90,6 +107,11 @@ def insta_posts_py(query, scope, max_posts, scrape_comments, save_path = ""):
 	results = []
 	posts_processed = 0
 	comments_bit = " and comments" if scrape_comments==True else ""
+	
+	if since != "" and until != "":
+		posts = takewhile(lambda p: p.date > until, dropwhile(lambda p: p.date > since, posts))
+
+
 
 	for post in posts:
 		results_posts = []
@@ -187,3 +209,15 @@ def insta_posts_py(query, scope, max_posts, scrape_comments, save_path = ""):
 		results.append(results_posts)
                     
 	return results
+
+
+def get_followers(username):
+  
+  profile = instaloader.Profile.from_username(instagram.context, username)
+  
+  follower_list = []
+  for follower in profile.get_followers():
+    # print(follower.username)
+    follower_list.append(follower.username)
+    
+  return(follower_list)

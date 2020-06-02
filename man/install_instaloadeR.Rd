@@ -10,5 +10,5 @@ install_instaloadeR(envname = NULL)
 \item{envname}{specify Python environment name for module installation}
 }
 \description{
-install_instaloadeR
+Installs the instaloader Python module
 }

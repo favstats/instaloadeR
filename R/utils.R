@@ -1,7 +1,7 @@
 
 #' init_instaloadeR
 #'
-#' @describtion Initializes the instaloader python functions. Only works when \code{install_instaloadeR()} has ben executed.
+#' @description Initializes the instaloader python functions. Only works when \code{install_instaloadeR()} has ben executed.
 #' @export
 init_instaloadeR <- function(){
 
@@ -13,11 +13,20 @@ init_instaloadeR <- function(){
 #' install_instaloadeR
 #'
 #'
-#' @describtion Installs the instaloader Python module
+#' @description Installs the instaloader Python module
 #' @param envname specify Python environment name for module installation
 #' @export
 install_instaloadeR <- function(envname = NULL){
   reticulate::py_install(c("instaloader"), pip = T, envname = envname)
+}
+
+#' from_unix
+#'
+#' @description Converts UNIX timestamp to datetime format
+#' @param x UNIX timestamp to be converted to datetime
+#' @export
+from_unix <- function(x) {
+  as.POSIXct(as.numeric(x), origin = '1970-01-01', tz = 'UTC')
 }
 
 

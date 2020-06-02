@@ -4,7 +4,15 @@
 \alias{insta_posts}
 \title{insta_posts}
 \usage{
-insta_posts(query, scope, max_posts, scrape_comments, save_path = "")
+insta_posts(
+  query,
+  scope,
+  max_posts,
+  scrape_comments,
+  save_path = "",
+  since = "",
+  until = ""
+)
 }
 \arguments{
 \item{query}{Specify hashtag or username}
@@ -16,6 +24,10 @@ insta_posts(query, scope, max_posts, scrape_comments, save_path = "")
 \item{scrape_comments}{get all comments from the retrieved posts (defaults to \code{FALSE}`)}
 
 \item{save_path}{specify a path to stream the Instagram data to (defaults to  \code{""} in which case no csv file is saved)}
+
+\item{since}{optional. get posts in specific timerange (latest date)}
+
+\item{until}{optional. get posts in specific timerange (earliest date)}
 }
 \description{
 insta_posts
