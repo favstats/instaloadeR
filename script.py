@@ -27,7 +27,7 @@ def insta_login_py(user, passwd = "", save = False):
       instagram.save_session_to_file()
 
 def getList(dict): 
-    return [*dict] 
+  return [*dict] 
 
 def save_csv(save_path, results_posts):
 	if not path.exists(save_path):
