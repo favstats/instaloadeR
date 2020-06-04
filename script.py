@@ -26,18 +26,15 @@ def insta_login_py(user, passwd = "", save = False):
     if save:
       instagram.save_session_to_file()
 
-def getList(dict): 
-	return [*dict] 
-
 def save_csv(save_path, results_posts):
 	if not path.exists(save_path):
 		with open(save_path, 'w', newline='', encoding='utf-8') as csvfile:
-			fieldnames = getList(results_posts[0].keys())
+			fieldnames = [*results_posts[0].keys()]
 			writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
 			writer.writeheader()
 	if path.exists(save_path):
 		with open(save_path, 'a', newline='', encoding='utf-8') as csvfile:
-			fieldnames = getList(results_posts[0].keys())
+			fieldnames = [*results_posts[0].keys()]
 			writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
 			for dictrow in results_posts:
 				writer.writerow(dictrow)
