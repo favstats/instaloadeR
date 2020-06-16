@@ -13,6 +13,6 @@ insta_posts <- function(query, scope, max_posts, scrape_comments, save_path = ""
   py$insta_posts_py(query, scope, max_posts, scrape_comments, save_path, since, until) %>%
     purrr::flatten() %>%
     dplyr::bind_rows() %>%
-    unique() %>%
-    dplyr::mutate(timestamp = from_unix(timestamp))
+    unique()# %>%
+    # dplyr::mutate(timestamp = from_unix(timestamp))
 }
