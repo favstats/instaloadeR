@@ -207,6 +207,17 @@ insta_login(load = T)
 get_followers("willsmith_fan_")
 ```
 
+## Get similar or suggested accounts
+
+``` r
+insta_login(load = T)
+
+
+similar_accounts <- get_similar_accounts("willsmith_fan_")
+
+similar_accounts
+```
+
 ## TODO
 
   - Geotags
