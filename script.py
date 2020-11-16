@@ -218,3 +218,15 @@ def get_followers(username):
     follower_list.append(follower.username)
     
   return(follower_list)
+  
+  
+def get_similar_accounts(username):
+  
+  profile = instaloader.Profile.from_username(instagram.context, username)
+  
+  account_list = []
+  for account in profile.get_similar_accounts():
+    # print(account.username)
+    account_list.append(account.username)
+    
+  return(account_list)
