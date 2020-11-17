@@ -75,7 +75,8 @@ def insta_posts_py(query, scope, max_posts, scrape_comments, save_path = "", sin
 		try:
 			if scope == "hashtag":
 				query = query.replace("#", "")
-				chunk = instagram.get_hashtag_posts(query)
+				hashtag_obj = instaloader.Hashtag.from_name(instagram.context, query)
+				chunk = hashtag_obj.get_all_posts()
 			elif scope == "username":
 				query = query.replace("@", "")
 				profile = instaloader.Profile.from_username(instagram.context, query)
