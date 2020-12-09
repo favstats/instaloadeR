@@ -150,15 +150,16 @@ def insta_posts_py(query, scope, max_posts, scrape_comments, save_path = "", sin
 				save_csv(save_path, results_posts)
 			results.append(results_posts)
 			continue
-
-	  if posts_processed % 10 == 0
-	    wait_time = randint(300,500)
-	    print("Wating for " + str(wait_time) + " seconds.")
-	    sleep(wait_time)
+        
+		if(posts_processed % 10 == 0):
+			wait_time = randint(300,500)
+			print("Wating for " + str(wait_time) + " seconds.")
+			sleep(wait_time)
 		else:
-		  wait_time = randint(20,30)
-		  print("Wating for " + str(wait_time) + " seconds.")
-		  sleep(wait_time)
+			wait_time = randint(20,30)
+			print("Wating for " + str(wait_time) + " seconds.")
+			sleep(wait_time)
+    
 		try:
 			for comment in post.get_comments():
 				answers = [answer for answer in comment.answers]
