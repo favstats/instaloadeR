@@ -5,6 +5,9 @@ from os import path
 from itertools import dropwhile, takewhile
 import re
 import csv
+from random import randint
+from time import sleep
+
 
 
 instagram = instaloader.Instaloader(
@@ -72,6 +75,7 @@ def insta_posts_py(query, scope, max_posts, scrape_comments, save_path = "", sin
 	for query in queries:
 		chunk_size = 0
 		print("Retrieving posts ('%s')" % query)
+		sleep(randint(1,10))
 		try:
 			if scope == "hashtag":
 				query = query.replace("#", "")
@@ -112,6 +116,7 @@ def insta_posts_py(query, scope, max_posts, scrape_comments, save_path = "", sin
 
 
 	for post in posts:
+
 		results_posts = []
         
 		posts_processed += 1
@@ -146,6 +151,15 @@ def insta_posts_py(query, scope, max_posts, scrape_comments, save_path = "", sin
 				save_csv(save_path, results_posts)
 			results.append(results_posts)
 			continue
+
+	  if posts_processed % 10 == 0
+	    wait_time = randint(300,500)
+	    print("Wating for " + str(wait_time) + " seconds.")
+	    sleep(wait_time)
+		else:
+	    wait_time = randint(20,30)
+	    print("Wating for " + str(wait_time) + " seconds.")
+	    sleep(wait_time)
 
 		try:
 			for comment in post.get_comments():
