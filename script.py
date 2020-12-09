@@ -75,7 +75,6 @@ def insta_posts_py(query, scope, max_posts, scrape_comments, save_path = "", sin
 	for query in queries:
 		chunk_size = 0
 		print("Retrieving posts ('%s')" % query)
-		sleep(randint(1,10))
 		try:
 			if scope == "hashtag":
 				query = query.replace("#", "")
