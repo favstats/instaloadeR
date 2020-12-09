@@ -156,10 +156,9 @@ def insta_posts_py(query, scope, max_posts, scrape_comments, save_path = "", sin
 	    print("Wating for " + str(wait_time) + " seconds.")
 	    sleep(wait_time)
 		else:
-	    wait_time = randint(20,30)
-	    print("Wating for " + str(wait_time) + " seconds.")
-	    sleep(wait_time)
-
+		  wait_time = randint(20,30)
+		  print("Wating for " + str(wait_time) + " seconds.")
+		  sleep(wait_time)
 		try:
 			for comment in post.get_comments():
 				answers = [answer for answer in comment.answers]
